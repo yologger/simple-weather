@@ -9,14 +9,16 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.yologger.simpleweather.ui.screen.main.MainViewModel
 import com.yologger.simpleweather.ui.theme.SimpleWeatherTheme
 
 class AppActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
 
+    @ExperimentalPermissionsApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { App(applicationContext) }
+        setContent { App() }
     }
 }

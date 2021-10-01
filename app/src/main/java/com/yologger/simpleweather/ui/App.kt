@@ -10,6 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.yologger.simpleweather.ui.screen.main.MainScreen
 import com.yologger.simpleweather.ui.screen.main.MainViewModel
 import com.yologger.simpleweather.ui.screen.settings.SettingsScreen
@@ -30,8 +31,9 @@ class NavActions(navController: NavHostController) {
     }
 }
 
+@ExperimentalPermissionsApi
 @Composable
-fun App(applicationContext: Context) {
+fun App() {
     SimpleWeatherTheme {
 
         val scaffoldState = rememberScaffoldState()
@@ -47,7 +49,7 @@ fun App(applicationContext: Context) {
                     val mainViewModel: MainViewModel = viewModel()
                     MainScreen(
                         viewModel = mainViewModel,
-                        navigateToSettings = actions.navigateToSettings
+                        navigateToSettings = actions.navigateToSettings,
                     )
                 }
                 composable(NavDestinations.SETTINGS_ROUTE) {

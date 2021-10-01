@@ -10,9 +10,8 @@ import java.lang.Thread.sleep
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        sleep(1000)
         val nextIntent = Intent(this, AppActivity::class.java)
         startActivity(nextIntent)
+        finish()
     }
 }

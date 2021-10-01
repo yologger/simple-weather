@@ -80,6 +80,9 @@ dependencies {
     // Landscapist - Glide
     implementation "com.github.skydoves:landscapist-glide:1.3.6"
 
+    // Accompanist - permissions
+    implementation "com.google.accompanist:accompanist-permissions:0.14.0"
+
     // JUnit
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
