@@ -60,7 +60,7 @@ fun MainScreen(
                 HomeScreenContent()
             }
             locationPermissionsState.hasBeenDeniedForever() -> {
-                OpenSettingsDialog(
+                RequirePermissionDialog(
                     onSettingClick = {
                         val nextIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName!!, null))
                         activity?.startActivity(nextIntent)
@@ -70,7 +70,7 @@ fun MainScreen(
             }
             else -> {
                 if (locationPermissionsState.shouldShowRationale) {
-                    OpenSettingsDialog(
+                    RequirePermissionDialog(
                         onSettingClick = {
                             val nextIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName!!, null))
                             activity?.startActivity(nextIntent)
@@ -133,7 +133,7 @@ fun HomeScreenContent() {
 }
 
 @Composable
-fun OpenSettingsDialog(
+fun RequirePermissionDialog(
     onSettingClick: () -> Unit,
     onDenyClick: () -> Unit
 ) {
