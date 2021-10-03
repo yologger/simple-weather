@@ -44,60 +44,6 @@ fun SettingsScreen(
             )
         }
     ) {
-        val accessFineLocationPermissionState = rememberPermissionState(permission = android.Manifest.permission.ACCESS_FINE_LOCATION)
-        Column(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.padding(16.dp)
-        ) {
-            if (accessFineLocationPermissionState.shouldShowRationale) {
-                PermissionRationale()
-            }
 
-            if (accessFineLocationPermissionState.hasPermission) {
-                PermissionGrantedButton()
-            } else if (accessFineLocationPermissionState.hasBeenDeniedForever()) {
-                PermissionDeniedButton()
-            } else {
-                RequestPermissionButton(accessFineLocationPermissionState)
-            }
-        }
     }
-}
-
-@Composable
-private fun PermissionRationale() {
-    Text("This is a rationale explaining why we need the ACCESS_FINE_LOCATION permission. We are displaying this because the user has denied the permission once.")
-}
-
-@ExperimentalPermissionsApi
-@Composable
-private fun RequestPermissionButton(accessFineLocationPermissionState: PermissionState) {
-    Button(onClick = {
-        if (!accessFineLocationPermissionState.hasPermission) {
-            accessFineLocationPermissionState.launchPermissionRequest()
-        }
-    }) {
-        Text( "Request ACCESS_FINE_LOCATION permission")
-    }
-}
-
-@Composable
-private fun PermissionGrantedButton() {
-    Button(onClick = {
-    }) {
-        Text("ACCESS_FINE_LOCATION permission granted.")
-    }
-}
-
-@Composable
-private fun PermissionDeniedButton() {
-    Button(onClick = {
-    }) {
-        Text("Camera permission denied forever - open settings.")
-    }
-}
-
-@ExperimentalPermissionsApi
-fun PermissionState.hasBeenDeniedForever(): Boolean {
-    return this.permissionRequested && !this.shouldShowRationale
 }
