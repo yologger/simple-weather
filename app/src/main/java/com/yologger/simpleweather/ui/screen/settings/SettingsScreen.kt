@@ -12,16 +12,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.rememberPermissionState
 import com.yologger.simpleweather.ui.theme.Purple200
 
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.yologger.simpleweather.ui.screen.main.MainViewModel
+
 @ExperimentalPermissionsApi
 @Composable
 fun SettingsScreen(
-    viewModel: SettingsViewModel,
+    viewModel: SettingsViewModel = hiltViewModel<SettingsViewModel>(),
     navigateUp: () -> Unit
 ) {
     viewModel.test()

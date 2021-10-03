@@ -2,10 +2,12 @@ package com.yologger.simpleweather.ui.screen.main
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.net.Uri
 import android.provider.Settings
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,34 +16,30 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
-import com.skydoves.landscapist.CircularReveal
-import com.skydoves.landscapist.glide.GlideImage
-import com.yologger.simpleweather.ui.theme.Purple200
 import com.yologger.simpleweather.R
 import com.yologger.simpleweather.ui.extension.hasBeenDeniedForever
+
 
 @ExperimentalPermissionsApi
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel,
+    viewModel: MainViewModel = hiltViewModel<MainViewModel>(),
     navigateToSettings: () -> Unit
 ) {
+
+     viewModel.test()
     val locationPermissionsState = rememberMultiplePermissionsState(
         permissions = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -106,6 +104,28 @@ fun HomeScreenTopAppBar(
 
 @Composable
 fun HomeScreenContent() {
+
+    val activity = (LocalContext.current as? Activity)
+
+    activity?.let {
+        val hasFineLocationPermission = ActivityCompat.checkSelfPermission(it, Manifest.permission.ACCESS_FINE_LOCATION)
+        val hasCoarseLocationPermission = ActivityCompat.checkSelfPermission(it, Manifest.permission.ACCESS_COARSE_LOCATION)
+
+        // Permission check
+        if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
+            val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+            if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                val location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                location?.run {
+                    val latitude = location.latitude
+                    val longitude  = location.longitude
+
+                }
+            }
+        }
+    }
+
     Box(
         modifier = Modifier
             .background(Color(0xFF00063D))

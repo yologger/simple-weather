@@ -1,20 +1,18 @@
 package com.yologger.simpleweather.ui
 
-import android.content.Context
+import android.app.Activity
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.yologger.simpleweather.ui.screen.main.MainScreen
-import com.yologger.simpleweather.ui.screen.main.MainViewModel
 import com.yologger.simpleweather.ui.screen.settings.SettingsScreen
-import com.yologger.simpleweather.ui.screen.settings.SettingsViewModel
 import com.yologger.simpleweather.ui.theme.SimpleWeatherTheme
 
 object NavDestinations {
@@ -33,9 +31,9 @@ class NavActions(navController: NavHostController) {
 
 @ExperimentalPermissionsApi
 @Composable
-fun App() {
+fun App(
+) {
     SimpleWeatherTheme {
-
         val scaffoldState = rememberScaffoldState()
         val navController = rememberNavController()
         val coroutineScope = rememberCoroutineScope()
@@ -44,18 +42,15 @@ fun App() {
         Scaffold(
             scaffoldState = scaffoldState,
         ) {
+
             NavHost(navController = navController, startDestination = NavDestinations.MAIN_ROUTE) {
                 composable(NavDestinations.MAIN_ROUTE) {
-                    val mainViewModel: MainViewModel = viewModel()
                     MainScreen(
-                        viewModel = mainViewModel,
                         navigateToSettings = actions.navigateToSettings,
                     )
                 }
                 composable(NavDestinations.SETTINGS_ROUTE) {
-                    val settingsViewModel: SettingsViewModel = viewModel()
                     SettingsScreen(
-                        viewModel = settingsViewModel,
                         navigateUp = actions.navigateUp
                     )
                 }
