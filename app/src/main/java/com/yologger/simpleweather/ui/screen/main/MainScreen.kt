@@ -38,8 +38,6 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel<MainViewModel>(),
     navigateToSettings: () -> Unit
 ) {
-
-     viewModel.test()
     val locationPermissionsState = rememberMultiplePermissionsState(
         permissions = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -55,7 +53,7 @@ fun MainScreen(
     ) {
         when {
             locationPermissionsState.allPermissionsGranted -> {
-                HomeScreenContent()
+                HomeScreenContent(viewModel = viewModel)
             }
             locationPermissionsState.hasBeenDeniedForever() -> {
                 RequirePermissionDialog(
@@ -103,8 +101,9 @@ fun HomeScreenTopAppBar(
 }
 
 @Composable
-fun HomeScreenContent() {
+fun HomeScreenContent(viewModel: MainViewModel) {
 
+    viewModel.getCurrentWeather()
     val activity = (LocalContext.current as? Activity)
 
     activity?.let {
