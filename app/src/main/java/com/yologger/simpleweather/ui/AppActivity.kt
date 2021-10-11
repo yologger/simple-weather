@@ -12,8 +12,6 @@ class AppActivity : ComponentActivity() {
     @ExperimentalPermissionsApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            App()
-        }
+        setContent { AppTheme() }
     }
 }

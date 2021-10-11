@@ -7,8 +7,8 @@ interface WeatherService {
 
     @GET("/data/2.5/weather")
     suspend fun getCurrentWeatherData(
-        @Query("lat") latitude: String,
-        @Query("lon") longitude: String,
+        @Query("lat") latitude: Double,
+        @Query("lon") longitude: Double,
         @Query("appid") appid: String,
         @Query("units") units: String = "metric"
     ): WeatherData

@@ -10,8 +10,8 @@
         android:name=".app.SimpleWeatherApplication"
         android:allowBackup="true"
         android:label="S Weather"
-        android:icon="@mipmap/ic_main"
-        android:roundIcon="@mipmap/ic_main_round"
+        android:icon="@mipmap/icon_splash"
+        android:roundIcon="@mipmap/icon_splash_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.SimpleWeather">

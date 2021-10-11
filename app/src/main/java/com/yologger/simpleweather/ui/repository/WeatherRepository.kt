@@ -5,5 +5,5 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 
 interface WeatherRepository {
-    suspend fun getCurrentWeatherData(): WeatherData
+    suspend fun getCurrentWeatherData(): WeatherData?
 }

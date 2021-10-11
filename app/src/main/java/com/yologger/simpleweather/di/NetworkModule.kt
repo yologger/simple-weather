@@ -1,6 +1,7 @@
 package com.yologger.simpleweather.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.yologger.simpleweather.app.Constants
 import com.yologger.simpleweather.data.datasource.api.WeatherService
 import dagger.Module
 import dagger.Provides
@@ -21,13 +22,12 @@ object NetworkModule {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org")
+            .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(WeatherService::class.java)
-        return service
+        return retrofit.create(WeatherService::class.java)
     }
 }

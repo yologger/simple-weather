@@ -1,7 +1,7 @@
 # Simple Weather
 
 ## Introduction
-`S weather` is a simple app that shows the weather.
+`S weather` is a simple weather app. This app fetches data from [OpenWeatherMap API](https://openweathermap.org/api) based on current location.
 
 ## Screenshots
 <img src="/imgs/screenshot.gif" width="300">
