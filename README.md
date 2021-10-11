@@ -23,6 +23,6 @@
 * Android Architecture Component - LiveData  
 * Android KTX
 * [Retrofit 2](https://github.com/square/retrofit)
+* [TedPermission](https://github.com/ParkSangGwon/TedPermission)
 * [Landscapist](https://github.com/skydoves/Landscapist) to use [Glide](https://github.com/bumptech/glide) with Jetpack Compose
 * [Accompanist](https://github.com/google/accompanist) to manager permission with Jetpack Compose
-* [TedPermission](https://github.com/ParkSangGwon/TedPermission)
