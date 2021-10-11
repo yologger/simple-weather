@@ -3,6 +3,7 @@
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/activity_splash</item>
+        <item name="colorPrimaryDark">@color/teal_200</item>
     </style>
 
     <style name="Theme.SimpleWeather" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

@@ -37,6 +37,16 @@ class HomeViewModel @Inject constructor(
     private val _liveIcon = MutableLiveData<String>().apply { value = "" }
     val liveIcon = _liveIcon
 
+    private val _liveHumidity = MutableLiveData<String>().apply { value = "" }
+    val liveHumidity = _liveHumidity
+
+    private val _livePressure = MutableLiveData<String>().apply { value = "" }
+    val livePressure = _livePressure
+
+    private val _liveWind = MutableLiveData<String>().apply { value = "" }
+    val liveWind = _liveWind
+
+
     init {
         fetchCurrentWeather()
     }
@@ -52,7 +62,9 @@ class HomeViewModel @Inject constructor(
                 _liveCurrentTime.postValue(getCurrentTime())
                 _liveCurrentDate.postValue(getCurrentDate())
                 _liveIcon.postValue(it.weather[0].icon)
-
+                _liveHumidity.postValue("${it.main.humidity}")
+                _liveWind.postValue("${it.wind.speed}")
+                _livePressure.postValue("${it.main.pressure}")
             }
             _liveIsLoading.postValue(false)
         }
@@ -75,6 +87,5 @@ class HomeViewModel @Inject constructor(
         val format = SimpleDateFormat("EEE d MMM yyyy", Locale.US)
         format.timeZone = TimeZone.getTimeZone("Asia/Seoul")
         return format.format(curTime)
-
     }
 }

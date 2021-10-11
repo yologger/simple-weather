@@ -99,6 +99,9 @@ dependencies {
     // Accompanist - permissions
     implementation "com.google.accompanist:accompanist-permissions:0.14.0"
 
+    // Accompanist - systemuicontroller
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.17.0"
+
     // JUnit
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

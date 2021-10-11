@@ -15,7 +15,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.yologger.simpleweather.ui.extension.hasBeenDeniedForever
+import com.yologger.simpleweather.ui.theme.Sky200
+import com.yologger.simpleweather.ui.theme.Sky500
+import com.yologger.simpleweather.ui.theme.Teal200
 
 @ExperimentalPermissionsApi
 @Composable
@@ -23,6 +27,9 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel<HomeViewModel>(),
     navigateToSettings: () -> Unit
 ) {
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(color = Teal200)
+
     val locationPermissionsState = rememberMultiplePermissionsState(
         permissions = listOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
