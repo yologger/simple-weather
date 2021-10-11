@@ -5,7 +5,11 @@
 
 ## Screenshots
 
+`Light theme`
+
 <img src="/imgs/light.gif" width="300">
+
+`Dark theme`
 
 <img src="/imgs/dark.gif" width="300">
 
