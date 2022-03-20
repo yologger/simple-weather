@@ -14,7 +14,6 @@
 <img src="/imgs/dark.gif" width="300">
 
 ## Dependencies
-`S weather` has following dependencies:
 * [Jetpack Compose](https://developer.android.com/jetpack/compose?gclid=CjwKCAjwqeWKBhBFEiwABo_XBundaUTOoQ9nvaoY9kFwLLkMyxa0qq_ebb0j4HiljqprdhCfCYvW9xoCQBgQAvD_BwE&gclsrc=aw.ds) for UI
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for DI
 * [Android Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)

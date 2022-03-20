@@ -28,8 +28,8 @@ class NavActions(navController: NavHostController) {
 
 @ExperimentalPermissionsApi
 @Composable
-fun AppTheme (
-) {
+fun AppTheme () {
+
     SimpleWeatherTheme {
         val scaffoldState = rememberScaffoldState()
         val navController = rememberNavController()

@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@SplashActivity)
 
         val alertDialog = builder
-            .setMessage("S Weather requires location permission.")
+            .setMessage("This app requires location permission.")
             .setPositiveButton("OK") { _, _ -> finish() }
             .create()
 
